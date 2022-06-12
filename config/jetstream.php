@@ -1,6 +1,7 @@
 <?php
 
 use Laravel\Jetstream\Features;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 
 return [
 
@@ -28,7 +29,11 @@ return [
      |
      */
 
-    'middleware' => ['web'],
+    'middleware' => [
+        'web',
+        'universal',
+        InitializeTenancyByDomain::class, // or whatever tenancy middleware you use
+    ],
 
     /*
     |--------------------------------------------------------------------------
